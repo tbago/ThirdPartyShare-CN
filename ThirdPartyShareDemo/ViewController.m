@@ -7,6 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "QQShare.h"
+#import "SinaWeiboShare.h"
+#import "TencentWeiboShare.h"
+#import "TencentWeixinShare.h"
 
 @interface ViewController ()
 
@@ -24,4 +28,59 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (IBAction)sharedButtonClick:(id)sender
+{
+    NSString *sharedContent = @"这里设置分享的内容";
+    
+///<以屏幕截图作为分享的图片
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[self.view layer] renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    NSData * imageData = UIImageJPEGRepresentation(screenshot, 1.0);
+    
+    switch ([sender tag])
+    {
+        case 0:
+        {
+            QQShare *qqShare = [QQShare sharedInstance];
+            [qqShare sharedMessageToQQ:sharedContent detailUrl:[self getOfficialWebsite] imageData:imageData shareType:QQMessage];
+            break;
+        }
+        case 1:
+        {
+            QQShare *qqShare = [QQShare sharedInstance];
+            [qqShare sharedMessageToQQ:sharedContent detailUrl:[self getOfficialWebsite] imageData:imageData shareType:QQZone];
+            break;
+        }
+        case 2:
+        {
+            TencentWeiboShare *tencentWeiboShare = [TencentWeiboShare sharedInstance];
+            [tencentWeiboShare sharedMessageToTencentWeibo:sharedContent
+                                                 imageData:imageData
+                                        rootViewController:self.navigationController];
+            break;
+        }
+        case 3:
+        {
+            TencentWeixinShare *tencentWeixinShare = [TencentWeixinShare sharedInstance];
+            [tencentWeixinShare sharedMessageToTencentWeixin:sharedContent imageData:imageData messageType:WXSession];
+            break;
+        }
+        case 4:
+        {
+            SinaWeiboShare *sinaWeiboShare = [SinaWeiboShare sharedInstance];
+            [sinaWeiboShare sharedMessageToSinaWeibo:sharedContent
+                                           imageData:imageData];
+            break;
+        }
+    }
+}
+
+-(NSString *)getOfficialWebsite
+{
+    return @"http://www.htlhome.com/";
+}
 @end

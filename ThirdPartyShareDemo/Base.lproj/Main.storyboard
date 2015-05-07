@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KwN-JE-I4A">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +15,129 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="290" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="02j-ae-OUt">
+                                <rect key="frame" x="155" y="250" width="290" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbZ-yI-5y5">
+                                        <rect key="frame" x="20" y="35" width="34" height="30"/>
+                                        <state key="normal" image="qq_shared_button">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sharedButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fzx-w3-PFe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZ7-eW-ojv">
+                                        <rect key="frame" x="182" y="35" width="34" height="30"/>
+                                        <state key="normal" image="wechat_shared_button">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sharedButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="THy-nC-eP7"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAQ-59-nrc">
+                                        <rect key="frame" x="236" y="35" width="34" height="30"/>
+                                        <state key="normal" image="sina_weibo_shared_button">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sharedButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GfX-rN-xzt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIx-rY-uh8">
+                                        <rect key="frame" x="128" y="35" width="34" height="30"/>
+                                        <state key="normal" image="qq_weibo_shared_button">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sharedButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CY5-YM-ECA"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="szH-T6-wAC">
+                                        <rect key="frame" x="74" y="35" width="34" height="30"/>
+                                        <state key="normal" image="qq_zone_shared_button">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sharedButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="thZ-5C-bxe"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="YIx-rY-uh8" firstAttribute="leading" secondItem="szH-T6-wAC" secondAttribute="trailing" constant="20" id="0r7-St-DtU"/>
+                                    <constraint firstItem="wbZ-yI-5y5" firstAttribute="leading" secondItem="02j-ae-OUt" secondAttribute="leading" constant="20" id="1OF-BE-GzU"/>
+                                    <constraint firstItem="uAQ-59-nrc" firstAttribute="width" secondItem="kZ7-eW-ojv" secondAttribute="width" id="3j8-f0-bfn"/>
+                                    <constraint firstAttribute="bottom" secondItem="wbZ-yI-5y5" secondAttribute="bottom" constant="35" id="BQU-bD-OP1"/>
+                                    <constraint firstItem="uAQ-59-nrc" firstAttribute="leading" secondItem="kZ7-eW-ojv" secondAttribute="trailing" constant="20" id="FOA-D0-q65"/>
+                                    <constraint firstItem="kZ7-eW-ojv" firstAttribute="leading" secondItem="YIx-rY-uh8" secondAttribute="trailing" constant="20" id="SjI-9T-2cR"/>
+                                    <constraint firstItem="uAQ-59-nrc" firstAttribute="height" secondItem="wbZ-yI-5y5" secondAttribute="height" id="V5S-Z2-8CS"/>
+                                    <constraint firstItem="uAQ-59-nrc" firstAttribute="height" secondItem="YIx-rY-uh8" secondAttribute="height" id="WhZ-Kb-4HJ"/>
+                                    <constraint firstItem="szH-T6-wAC" firstAttribute="leading" secondItem="wbZ-yI-5y5" secondAttribute="trailing" constant="20" id="X1y-XV-md3"/>
+                                    <constraint firstItem="uAQ-59-nrc" firstAttribute="height" secondItem="kZ7-eW-ojv" secondAttribute="height" id="Yvp-Cn-PQr"/>
+                                    <constraint firstItem="uAQ-59-nrc" firstAttribute="width" secondItem="wbZ-yI-5y5" secondAttribute="width" id="abV-MV-Nnl"/>
+                                    <constraint firstItem="YIx-rY-uh8" firstAttribute="top" secondItem="02j-ae-OUt" secondAttribute="top" constant="35" id="abX-3e-eXJ"/>
+                                    <constraint firstItem="uAQ-59-nrc" firstAttribute="width" secondItem="szH-T6-wAC" secondAttribute="width" id="elN-bQ-P0E"/>
+                                    <constraint firstAttribute="bottom" secondItem="szH-T6-wAC" secondAttribute="bottom" constant="35" id="g0f-mv-1q8"/>
+                                    <constraint firstItem="uAQ-59-nrc" firstAttribute="height" secondItem="szH-T6-wAC" secondAttribute="height" id="itg-E8-YVi"/>
+                                    <constraint firstItem="szH-T6-wAC" firstAttribute="top" secondItem="02j-ae-OUt" secondAttribute="top" constant="35" id="j9H-ph-pFh"/>
+                                    <constraint firstItem="wbZ-yI-5y5" firstAttribute="top" secondItem="02j-ae-OUt" secondAttribute="top" constant="35" id="jWj-Bp-SQm"/>
+                                    <constraint firstItem="kZ7-eW-ojv" firstAttribute="top" secondItem="02j-ae-OUt" secondAttribute="top" constant="35" id="kFu-Ud-b89"/>
+                                    <constraint firstAttribute="bottom" secondItem="kZ7-eW-ojv" secondAttribute="bottom" constant="35" id="kuG-Ee-fEj"/>
+                                    <constraint firstItem="uAQ-59-nrc" firstAttribute="top" secondItem="02j-ae-OUt" secondAttribute="top" constant="35" id="lfR-sU-34S"/>
+                                    <constraint firstAttribute="bottom" secondItem="YIx-rY-uh8" secondAttribute="bottom" constant="35" id="nl9-Ca-CVd"/>
+                                    <constraint firstItem="uAQ-59-nrc" firstAttribute="width" secondItem="YIx-rY-uh8" secondAttribute="width" id="qEI-lU-sWJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="uAQ-59-nrc" secondAttribute="bottom" constant="35" id="sE2-zp-uem"/>
+                                    <constraint firstAttribute="trailing" secondItem="uAQ-59-nrc" secondAttribute="trailing" constant="20" id="xK9-bt-D8L"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="02j-ae-OUt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="150" id="a0l-7b-WBH"/>
+                            <constraint firstItem="02j-ae-OUt" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="230" id="hcS-RB-AhM"/>
+                            <constraint firstItem="02j-ae-OUt" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qWe-U4-Vro"/>
+                            <constraint firstItem="02j-ae-OUt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sBo-0g-keE"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="a0l-7b-WBH"/>
+                                <exclude reference="hcS-RB-AhM"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="OJW-eJ-yOi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1132" y="68"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lZw-Su-IrO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KwN-JE-I4A" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kZl-jv-RQw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="h0s-nc-NS8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WNb-hI-GIp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="410" y="68"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="qq_shared_button" width="29" height="28"/>
+        <image name="qq_weibo_shared_button" width="29" height="28"/>
+        <image name="qq_zone_shared_button" width="29" height="28"/>
+        <image name="sina_weibo_shared_button" width="28" height="28"/>
+        <image name="wechat_shared_button" width="28" height="28"/>
+    </resources>
 </document>
