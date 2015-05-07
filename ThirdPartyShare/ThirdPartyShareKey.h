@@ -1,9 +1,9 @@
 //
 //  ThirdPartyShareKey.h
-//  decoration
+//  tbago
 //
-//  Created by anxs on 15/3/16.
-//  Copyright (c) 2015年 htl. All rights reserved.
+//  Created by tbago on 15/3/16.
+//  Copyright (c) 2015年 tbago. All rights reserved.
 //
 
 #ifndef DECORATION_THIRDPARTYSHAREKEY_H_

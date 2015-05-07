@@ -2,8 +2,8 @@
 //  SinaWeiboShare.h
 //  WirelessKunshan
 //
-//  Created by anxs on 14-9-5.
-//  Copyright (c) 2014年 ygcomputer. All rights reserved.
+//  Created by tbago on 14-9-5.
+//  Copyright (c) 2014年 tbago. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

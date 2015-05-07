@@ -1,9 +1,9 @@
 //
 //  QQZoneShare.h
-//  WirelessKunshan
+//  tbago
 //
-//  Created by anxs on 14-9-9.
-//  Copyright (c) 2014年 ygcomputer. All rights reserved.
+//  Created by tbago on 14-9-9.
+//  Copyright (c) 2015年 tbago. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
