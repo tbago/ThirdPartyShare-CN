@@ -43,19 +43,19 @@
     
     switch ([sender tag])
     {
-        case 0:
+        case 0: //<qq消息
         {
             QQShare *qqShare = [QQShare sharedInstance];
             [qqShare sharedMessageToQQ:sharedContent detailUrl:[self getOfficialWebsite] imageData:imageData shareType:QQMessage];
             break;
         }
-        case 1:
+        case 1: //<qq空间
         {
             QQShare *qqShare = [QQShare sharedInstance];
             [qqShare sharedMessageToQQ:sharedContent detailUrl:[self getOfficialWebsite] imageData:imageData shareType:QQZone];
             break;
         }
-        case 2:
+        case 2:  //<腾讯微博
         {
             TencentWeiboShare *tencentWeiboShare = [TencentWeiboShare sharedInstance];
             [tencentWeiboShare sharedMessageToTencentWeibo:sharedContent
@@ -63,13 +63,13 @@
                                         rootViewController:self.navigationController];
             break;
         }
-        case 3:
+        case 3:  //<腾讯微信
         {
             TencentWeixinShare *tencentWeixinShare = [TencentWeixinShare sharedInstance];
             [tencentWeixinShare sharedMessageToTencentWeixin:sharedContent imageData:imageData messageType:WXSession];
             break;
         }
-        case 4:
+        case 4: //<新浪微博
         {
             SinaWeiboShare *sinaWeiboShare = [SinaWeiboShare sharedInstance];
             [sinaWeiboShare sharedMessageToSinaWeibo:sharedContent
@@ -83,4 +83,5 @@
 {
     return @"http://www.htlhome.com/";
 }
+
 @end

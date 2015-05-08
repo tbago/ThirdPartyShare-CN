@@ -20,7 +20,7 @@
 ///<Tencent Weibo
 #define kTencentWeiboAppKey                 @"801517466"
 #define kTencentWeiboAppSecret              @"91e74873d204bbad715f23a189e9ea51"
-#define kTencentWeiboRedirectURI            @"http://www.htlhome.com"
+#define kTencentWeiboRedirectURI            @"http://www.tbago.com"
 
 ///<Tencent Weixin
 #define kWeixinSDKAppKey                    @"wxe12683e11935dacf"
