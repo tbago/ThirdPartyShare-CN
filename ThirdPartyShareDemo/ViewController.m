@@ -81,7 +81,7 @@
 
 -(NSString *)getOfficialWebsite
 {
-    return @"http://www.htlhome.com/";
+    return @"http://www.tbago.com/";
 }
 
 @end
