@@ -60,3 +60,33 @@ demo工程采用xcode 6.2编译，采用size class和auto layout做代码实现�
     return @"http://www.tbago.com/";
 }
 ```
+## 返回结果：
+### 腾讯微信：
+1、需要在AppDelegate.m中实现如下方法：
+```objective-c
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    [WXApi handleOpenURL:url delegate:[TencentWeixinShare sharedInstance]];
+    
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    [WXApi handleOpenURL:url delegate:[TencentWeixinShare sharedInstance]];
+    return YES;
+}
+```
+返回结果通过block的方式返回,例如：
+```objective-c
+    [[TencentWeiboShare sharedInstance] setResponseResultBlock:^(BOOL result, NSString *errorString) {
+        if (result) {
+            NSLog(@"Share image to WeChat success.");
+        }
+        else {
+            NSLog(errorString);
+        }
+    }];
+```
+
