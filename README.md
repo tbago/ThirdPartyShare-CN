@@ -85,7 +85,7 @@ demo工程采用xcode 6.2编译，采用size class和auto layout做代码实现�
             NSLog(@"Share image to WeChat success.");
         }
         else {
-            NSLog(errorString);
+            NSLog(@"%@",errorString);
         }
     }];
 ```
