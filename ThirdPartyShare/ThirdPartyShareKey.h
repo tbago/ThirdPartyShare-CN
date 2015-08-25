@@ -9,22 +9,21 @@
 #ifndef DECORATION_THIRDPARTYSHAREKEY_H_
 #define DECORATION_THIRDPARTYSHAREKEY_H_
 
-
 ///<Tencent Open API
-#define kTencentAppKey         @"222222"
+extern NSString * const     kTencentAppKey;
 
 ///<Sina Weibo
-#define kWeiboAppKey         @"3264221036"
-#define kWeiboRedirectURI    @"https://api.weibo.com/oauth2/default.html"
+extern NSString * const     kWeiboAppKey;
+extern NSString * const     kWeiboRedirectURI;
 
 ///<Tencent Weibo
-#define kTencentWeiboAppKey                 @"801517466"
-#define kTencentWeiboAppSecret              @"91e74873d204bbad715f23a189e9ea51"
-#define kTencentWeiboRedirectURI            @"http://www.htlhome.com"
+extern NSString * const     kTencentWeiboAppKey;
+extern NSString * const     kTencentWeiboAppSecret;
+extern NSString * const     kTencentWeiboRedirectURI;
 
 ///<Tencent Weixin
-#define kWeixinSDKAppKey                    @"wxe12683e11935dacf"
-#define kWeixinSDKAppSecret                 @"e6a1a56156a963793f8d5893b907e4ea"
-#define kWeixinSDKDescription               @"Tbago"
+extern NSString * const     kWeixinSDKAppKey;
+extern NSString * const     kWeixinSDKAppSecret;
+extern NSString * const     kWeixinSDKDescription;
 
 #endif  ///<DECORATION_THIRDPARTYSHAREKEY_H_

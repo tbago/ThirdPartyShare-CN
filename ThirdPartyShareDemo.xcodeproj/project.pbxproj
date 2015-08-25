@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D01FDD671B8C38CE00EFBE32 /* ThirdPartyShareKey.m in Sources */ = {isa = PBXBuildFile; fileRef = D01FDD661B8C38CE00EFBE32 /* ThirdPartyShareKey.m */; };
 		F42DFC2C1AFB56800097FACA /* QQShare.m in Sources */ = {isa = PBXBuildFile; fileRef = F42DFC241AFB56800097FACA /* QQShare.m */; };
 		F42DFC2D1AFB56800097FACA /* SinaWeiboShare.m in Sources */ = {isa = PBXBuildFile; fileRef = F42DFC261AFB56800097FACA /* SinaWeiboShare.m */; };
 		F42DFC2E1AFB56800097FACA /* TencentWeiboShare.m in Sources */ = {isa = PBXBuildFile; fileRef = F42DFC281AFB56800097FACA /* TencentWeiboShare.m */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D01FDD661B8C38CE00EFBE32 /* ThirdPartyShareKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdPartyShareKey.m; sourceTree = "<group>"; };
 		F42DFC231AFB56800097FACA /* QQShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQShare.h; sourceTree = "<group>"; };
 		F42DFC241AFB56800097FACA /* QQShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQShare.m; sourceTree = "<group>"; };
 		F42DFC251AFB56800097FACA /* SinaWeiboShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboShare.h; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				F42DFC291AFB56800097FACA /* TencentWeixinShare.h */,
 				F42DFC2A1AFB56800097FACA /* TencentWeixinShare.m */,
 				F42DFC2B1AFB56800097FACA /* ThirdPartyShareKey.h */,
+				D01FDD661B8C38CE00EFBE32 /* ThirdPartyShareKey.m */,
 			);
 			path = ThirdPartyShare;
 			sourceTree = SOURCE_ROOT;
@@ -413,6 +416,7 @@
 				F44A5C6B1AFB5FB200A8038D /* AFHTTPRequestOperation.m in Sources */,
 				F44A5C731AFB5FB200A8038D /* AFURLSessionManager.m in Sources */,
 				F42DFC2C1AFB56800097FACA /* QQShare.m in Sources */,
+				D01FDD671B8C38CE00EFBE32 /* ThirdPartyShareKey.m in Sources */,
 				F481B43B1AFB44ED00F29ADA /* AppDelegate.m in Sources */,
 				F44A5C6D1AFB5FB200A8038D /* AFHTTPSessionManager.m in Sources */,
 				F481B4381AFB44ED00F29ADA /* main.m in Sources */,
