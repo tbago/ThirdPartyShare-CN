@@ -3,15 +3,14 @@
 //  tbago
 //
 //  Created by tbago on 14-9-9.
-//  Copyright (c) 2014年 tbago. All rights reserved.
+//  Copyright (c) 2015 tbago. All rights reserved.
 //
 
 #import "TencentWeixinShare.h"
 #import <UIKit/UIKit.h>
-#import "WXApi.h"
 #import "ThirdPartyShareKey.h"
 
-@interface TencentWeixinShare() <WXApiDelegate>
+@interface TencentWeixinShare()
 
 @property(atomic) enum WXScene scene;
 
@@ -19,24 +18,20 @@
 
 @implementation TencentWeixinShare
 
-+ (TencentWeixinShare *)sharedInstance
-{
-    @synchronized(self)
-    {
-        static TencentWeixinShare *tencentWeixinShare = nil;
-        if (tencentWeixinShare == nil)
-        {
-            tencentWeixinShare = [[self alloc] init];
-        }
-        return tencentWeixinShare;
-    }
+#pragma mark - init
++ (instancetype)sharedInstance {
+    static TencentWeixinShare *_sharedInstance = nil;
+    static dispatch_once_t oncePredicate;
+    dispatch_once(&oncePredicate, ^{
+        _sharedInstance = [[self alloc] init];
+    });
+    return _sharedInstance;
 }
 
 - (id)init
 {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         self.scene = WXSceneSession;
         //向微信注册
         [WXApi registerApp:kWeixinSDKAppKey withDescription:kWeixinSDKDescription];
@@ -44,6 +39,7 @@
     return self;
 }
 
+#pragma mark - public method
 - (BOOL)sharedMessageToTencentWeixin:(NSString *) message
                            imageData:(NSData *) imageData
                          messageType:(enum WXMessageType) messageType
@@ -77,10 +73,14 @@
     req.bText = NO;
     req.scene = self.scene;
     
-    [WXApi sendReq:req];
-    return YES;
+    return [WXApi sendReq:req];
 }
 
+- (BOOL)isWXAppInstalled {
+    return [WXApi isWXAppInstalled];
+}
+
+#pragma mark - WXApiDelegate
 -(void) onReq:(BaseReq*)req
 {
     if([req isKindOfClass:[GetMessageFromWXReq class]])
@@ -122,11 +122,15 @@
 {
     if([resp isKindOfClass:[SendMessageToWXResp class]])
     {
-        NSString *strTitle = [NSString stringWithFormat:@"发送媒体消息结果"];
-        NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+        if (resp.errCode != 0) {
+            NSString *strErrorMessage = [NSString stringWithFormat:@"Send message failed,errorcode:%d", resp.errCode];
+            self.responseResultBlock(NO, strErrorMessage);
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Tip" message:strErrorMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//            [alert show];
+        }
+        else {
+            self.responseResultBlock(YES, nil);
+        }
     }
 }
 @end

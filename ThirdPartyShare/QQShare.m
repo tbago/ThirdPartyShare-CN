@@ -2,8 +2,8 @@
 //  QQZoneShare.m
 //  tbago
 //
-//  Created by anxs on 14-9-9.
-//  Copyright (c) 2014年 tbago. All rights reserved.
+//  Created by tbago on 14-9-9.
+//  Copyright (c) 2015 tbago. All rights reserved.
 //
 
 #import "QQShare.h"
@@ -22,28 +22,25 @@
 
 @implementation QQShare
 
-+ (QQShare *)sharedInstance
-{
-    @synchronized(self)
-    {
-        static QQShare *qqZoneShare = nil;
-        if (qqZoneShare == nil)
-        {
-            qqZoneShare = [[self alloc] init];
-        }
-        return qqZoneShare;
-    }
+#pragma mark - init
++ (instancetype)sharedInstance {
+    static QQShare *_sharedInstance = nil;
+    static dispatch_once_t oncePredicate;
+    dispatch_once(&oncePredicate, ^{
+        _sharedInstance = [[self alloc] init];
+    });
+    return _sharedInstance;
 }
 
 - (id)init
 {
     self = [super init];
-    if (self)
-    {
+    if (self) {
     }
     return self;
 }
 
+#pragma mark - public method
 - (BOOL)sharedMessageToQQ:(NSString *) message
                 detailUrl:(NSString *) detailUrl
                 imageData:(NSData *) imageData
@@ -68,7 +65,7 @@
     SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:object];
     
     QQApiSendResultCode sent;
-    if (sharedType == QQMessage)
+    if (sharedType == QQShareMessage)
     {
         //将内容分享到qq
         sent = [QQApiInterface sendReq:req];
@@ -86,7 +83,11 @@
     return NO;
 }
 
-#pragma mark TencentLoginDelegate
+- (BOOL)isQQInstalled {
+    return [QQApi isQQInstalled];
+}
+
+#pragma mark -TencentLoginDelegate
 - (void)tencentDidLogin
 {
     if (_tencentOAuth.accessToken && 0 != [_tencentOAuth.accessToken length])

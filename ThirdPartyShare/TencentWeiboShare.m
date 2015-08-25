@@ -3,7 +3,7 @@
 //  tbago
 //
 //  Created by tbago on 14-9-9.
-//  Copyright (c) 2014年 tbago. All rights reserved.
+//  Copyright (c) 2015 tbago. All rights reserved.
 //
 
 #import "TencentWeiboShare.h"
@@ -22,24 +22,19 @@
 
 @implementation TencentWeiboShare
 
-+ (TencentWeiboShare *)sharedInstance
-{
-    @synchronized(self)
-    {
-        static TencentWeiboShare *tencentWeiboShare = nil;
-        if (tencentWeiboShare == nil)
-        {
-            tencentWeiboShare = [[self alloc] init];
-        }
-        return tencentWeiboShare;
-    }
++ (instancetype)sharedInstance {
+    static TencentWeiboShare *_sharedInstance = nil;
+    static dispatch_once_t oncePredicate;
+    dispatch_once(&oncePredicate, ^{
+        _sharedInstance = [[self alloc] init];
+    });
+    return _sharedInstance;
 }
 
 - (id)init
 {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         self.weiboApi = [[WeiboApi alloc] initWithAppKey:kTencentWeiboAppKey andSecret:kTencentWeiboAppSecret andRedirectUri:kTencentWeiboRedirectURI andAuthModeFlag:0 andCachePolicy:0];
         self.alreadyAuthorized = NO;
     }
@@ -101,7 +96,7 @@
     
     //注意回到主线程，有些回调并不在主线程中，所以这里必须回到主线程
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSLog(@"%@", str);
+        self.responseResultBlock(NO, str);
     });
 }
 
@@ -126,8 +121,7 @@
  * @param   INPUT   wbapi   weiboapi 对象，取消授权后，授权信息会被清空
  * @return  无返回
  */
-- (void)DidAuthCanceled:(WeiboApi *)wbapi_
-{
+- (void)DidAuthCanceled:(WeiboApi *)wbapi_ {
     
 }
 
@@ -142,7 +136,7 @@
     
     //注意回到主线程，有些回调并不在主线程中，所以这里必须回到主线程
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSLog(@"%@", str);
+        self.responseResultBlock(NO, str);
     });
 }
 
@@ -174,6 +168,7 @@
     
     NSLog(@"result = %@",strResult);
     dispatch_async(dispatch_get_main_queue(), ^{
+        self.responseResultBlock(YES, nil);
     });
 }
 
@@ -189,7 +184,7 @@
      NSLog(@"result = %@",strResult);
     //注意回到主线程，有些回调并不在主线程中，所以这里必须回到主线程
     dispatch_async(dispatch_get_main_queue(), ^{
-        
+        self.responseResultBlock(NO, strResult);
     });
 }
 @end

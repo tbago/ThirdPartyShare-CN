@@ -3,7 +3,7 @@
 //  Tbago
 //
 //  Created by tbago on 14-9-5.
-//  Copyright (c) 2014年 tbago. All rights reserved.
+//  Copyright (c) 2015 tbago. All rights reserved.
 //
 
 #import "SinaWeiboShare.h"
@@ -12,17 +12,15 @@
 
 @implementation SinaWeiboShare
 
-+ (SinaWeiboShare *)sharedInstance
+#pragma mark - init
++ (instancetype)sharedInstance
 {
-    @synchronized(self)
-    {
-        static SinaWeiboShare *sinaWeiboShare = nil;
-        if (sinaWeiboShare == nil)
-        {
-            sinaWeiboShare = [[self alloc] init];
-        }
-        return sinaWeiboShare;
-    }
+    static SinaWeiboShare *_sharedInstance = nil;
+    static dispatch_once_t oncePredicate;
+    dispatch_once(&oncePredicate, ^{
+        _sharedInstance = [[self alloc] init];
+    });
+    return _sharedInstance;
 }
 
 - (id)init
@@ -36,6 +34,7 @@
     return self;
 }
 
+#pragma mark - public method
 - (BOOL)sharedMessageToSinaWeibo:(NSString *) message
                      imageData:(NSData *) imageData
 {
@@ -54,8 +53,11 @@
     WBSendMessageToWeiboRequest *request = [WBSendMessageToWeiboRequest requestWithMessage:wbMessageObject];
     request.userInfo = @{@"ShareMessageFrom": @"SinaWeiboShare"};
     
-    request.shouldOpenWeiboAppInstallPageIfNotInstalled = YES;
-    [WeiboSDK sendRequest:request];
-    return YES;
+    request.shouldOpenWeiboAppInstallPageIfNotInstalled = NO;
+    return [WeiboSDK sendRequest:request];
+}
+
+- (BOOL)isWeiboAppInstalled {
+    return [WeiboSDK isWeiboAppInstalled];
 }
 @end

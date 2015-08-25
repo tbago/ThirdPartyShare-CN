@@ -1,9 +1,9 @@
 //
 //  SinaWeiboShare.h
-//  WirelessKunshan
+//  Tbago
 //
 //  Created by tbago on 14-9-5.
-//  Copyright (c) 2014年 tbago. All rights reserved.
+//  Copyright (c) 2015 tbago. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,8 +11,10 @@
 
 @interface SinaWeiboShare : NSObject
 
-+ (SinaWeiboShare *)sharedInstance;
++ (instancetype)sharedInstance;
 
 - (BOOL)sharedMessageToSinaWeibo:(NSString *) message
                        imageData:(NSData *) imageData;
+
+- (BOOL)isWeiboAppInstalled;
 @end
