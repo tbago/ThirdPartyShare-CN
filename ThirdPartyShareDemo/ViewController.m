@@ -46,18 +46,26 @@
         case 0: //<qq消息
         {
             QQShare *qqShare = [QQShare sharedInstance];
-            [qqShare sharedMessageToQQ:sharedContent detailUrl:[self getOfficialWebsite] imageData:imageData shareType:QQMessage];
+            [qqShare sharedMessageToQQ:sharedContent detailUrl:[self getOfficialWebsite] imageData:imageData shareType:QQShareMessage];
             break;
         }
         case 1: //<qq空间
         {
             QQShare *qqShare = [QQShare sharedInstance];
-            [qqShare sharedMessageToQQ:sharedContent detailUrl:[self getOfficialWebsite] imageData:imageData shareType:QQZone];
+            [qqShare sharedMessageToQQ:sharedContent detailUrl:[self getOfficialWebsite] imageData:imageData shareType:QQShareZone];
             break;
         }
         case 2:  //<腾讯微博
         {
             TencentWeiboShare *tencentWeiboShare = [TencentWeiboShare sharedInstance];
+            [tencentWeiboShare setResponseResultBlock:^(BOOL result, NSString *errorString) {
+                if (result) {
+                    NSLog(@"Share image to Tencent Weibo success.");
+                }
+                else {
+                    NSLog(@"%@", errorString);
+                }
+            }];
             [tencentWeiboShare sharedMessageToTencentWeibo:sharedContent
                                                  imageData:imageData
                                         rootViewController:self.navigationController];
@@ -66,6 +74,14 @@
         case 3:  //<腾讯微信
         {
             TencentWeixinShare *tencentWeixinShare = [TencentWeixinShare sharedInstance];
+            [tencentWeixinShare setResponseResultBlock:^(BOOL result, NSString *errorString) {
+                if (result) {
+                    NSLog(@"Share image to WeChat success.");
+                }
+                else {
+                    NSLog(@"%@", errorString);
+                }
+            }];
             [tencentWeixinShare sharedMessageToTencentWeixin:sharedContent imageData:imageData messageType:WXSession];
             break;
         }

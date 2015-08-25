@@ -25,6 +25,6 @@
 ///<Tencent Weixin
 #define kWeixinSDKAppKey                    @"wxe12683e11935dacf"
 #define kWeixinSDKAppSecret                 @"e6a1a56156a963793f8d5893b907e4ea"
-#define kWeixinSDKDescription               @"Yuneec CGO3"
+#define kWeixinSDKDescription               @"Tbago"
 
 #endif  ///<DECORATION_THIRDPARTYSHAREKEY_H_
