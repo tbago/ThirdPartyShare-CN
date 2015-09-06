@@ -110,6 +110,7 @@
     NSString *str = [[NSString alloc]initWithFormat:@"accesstoken = %@\r\n openid = %@\r\n appkey=%@ \r\n appsecret=%@ \r\n refreshtoken=%@ ", wbobj.accessToken, wbobj.openid, wbobj.appKey, wbobj.appSecret, wbobj.refreshToken];
     
     NSLog(@"result = %@",str);
+    self.alreadyAuthorized = YES;
     //注意回到主线程，有些回调并不在主线程中，所以这里必须回到主线程
     dispatch_async(dispatch_get_main_queue(), ^{
         [self sendWeiboMessage];
@@ -122,7 +123,7 @@
  * @return  无返回
  */
 - (void)DidAuthCanceled:(WeiboApi *)wbapi_ {
-    
+    self.alreadyAuthorized = NO;
 }
 
 /**
@@ -133,7 +134,7 @@
 - (void)DidAuthFailWithError:(NSError *)error
 {
     NSString *str = [[NSString alloc] initWithFormat:@"get token error, errcode = %@",error.userInfo];
-    
+    self.alreadyAuthorized = NO;
     //注意回到主线程，有些回调并不在主线程中，所以这里必须回到主线程
     dispatch_async(dispatch_get_main_queue(), ^{
         self.responseResultBlock(NO, str);
